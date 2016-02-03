@@ -2,7 +2,7 @@ Social = new Mongo.Collection( 'social' );
 
 Social.allow({
 	insert: () => false,
-	update: () => false,
+	update: () => true,
 	remove: () => false
 });
 
@@ -13,6 +13,9 @@ Social.deny({
 });
 
 let SocialSchema = new SimpleSchema({
+	"name":{
+		type:String
+	},
 	"icon":{
 		type:String
 	},

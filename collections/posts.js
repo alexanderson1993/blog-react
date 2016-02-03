@@ -2,16 +2,23 @@ Posts = new Mongo.Collection( 'posts' );
 
 Posts.allow({
   insert: () => false,
-  update: () => false,
+  update: () => true,
   remove: () => false
 });
 
 Posts.deny({
   insert: () => true,
-  update: () => true,
+  update: () => false,
   remove: () => true
 });
 
+function makeExerpt(html){
+  let tester = new RegExp('^(.*?)\\n');
+  if (tester.exec(html)){
+    return tester.exec(html)[0];
+  }
+  return html.substr(0,50);
+}
 let PostsSchema = new SimpleSchema({
   "published": {
     type: Boolean,
@@ -36,7 +43,10 @@ let PostsSchema = new SimpleSchema({
     type: String,
     label: "The date this post was last updated on.",
     autoValue() {
-      return ( new Date() ).toISOString();
+      if (!this.value){
+        return ( new Date() ).toISOString();
+      }
+      return this.value;
     }
   },
   "title": {
@@ -49,13 +59,23 @@ let PostsSchema = new SimpleSchema({
     label: "The slug for this post.",
     autoValue() {
       let slug              = this.value,
-          existingSlugCount = Posts.find( { _id: { $ne: this.docId }, slug: new RegExp( slug ) } ).count(),
-          existingUntitled  = Posts.find( { slug: { $regex: /untitled-post/i } } ).count();
+      existingSlugCount = Posts.find( { _id: { $ne: this.docId }, slug: new RegExp( slug ) } ).count(),
+      existingUntitled  = Posts.find( { slug: { $regex: /untitled-post/i } } ).count();
 
       if ( slug ) {
         return existingSlugCount > 0 ? `${ slug }-${ existingSlugCount + 1 }` : slug;
       } else {
         return existingUntitled > 0 ? `untitled-post-${ existingUntitled + 1 }` : 'untitled-post';
+      }
+    }
+  },
+  "exerpt": {
+    type: String,
+    label: "The short exerpt of this post.",
+    optional:true,
+    autoValue() {
+      if (this.field('content').value){
+        return makeExerpt(this.field('content').value);
       }
     }
   },

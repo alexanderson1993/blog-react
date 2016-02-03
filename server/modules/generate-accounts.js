@@ -1,28 +1,17 @@
 let administrators = [
   {
-    name: { first: 'Admin', last: 'McAdmin' },
-    email: 'admin@admin.com',
-    password: 'password'
+    name: { first: 'Alex', last: 'Anderson' },
+    email: 'alexanderson1993@gmail.com',
+    password: 'voyager1'
   },
-  {
-    name: { first: 'Joe', last: 'Buff' },
-    email: 'joe@hdbuff.com',
-    password: 'password'
-  },
-  {
-    name: { first: 'Jane', last: 'Buff' },
-    email: 'jane@hdbuff.com',
-    password: 'password'
-  }
 ];
 
 let generateAccounts = () => {
-  let fakeUserCount = 5,
+  let fakeUserCount = 0,
       usersExist    = _checkIfAccountsExist( administrators.length + fakeUserCount );
 
   if ( !usersExist ) {
     _createUsers( administrators );
-    _createUsers( _generateFakeUsers( fakeUserCount ) );
   }
 };
 

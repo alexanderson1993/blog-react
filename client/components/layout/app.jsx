@@ -4,6 +4,7 @@ App = React.createClass({
     return {
       loggingIn: Meteor.loggingIn(),
       hasUser: !!Meteor.user(),
+      isAdmin: Roles.userIsInRole(Meteor.userId(),'admin'),
       isPublic( route ) {
         return [
         'index',
@@ -25,6 +26,7 @@ App = React.createClass({
   },
   render() {
     return <div className="app-root">
+    <AppHeader hasUser={ this.data.hasUser } isAdmin={ this.data.isAdmin } />
     { this.data.loggingIn ? <Loading /> : this.getView() }
     </div>;
   }

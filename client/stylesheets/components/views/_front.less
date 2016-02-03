@@ -1,18 +1,62 @@
-@import url(https://fonts.googleapis.com/css?family=Questrial|Josefin+Sans: 600);.front{
+@import url(https://fonts.googleapis.com/css?family=Questrial|Josefin+Sans: 600);
+.fa-snapchat{
+	background-image: url(https://s3-us-west-2.amazonaws.com/ralex93/blog/images/HB3sdywtWEKwtpoGs-undefined);
+	background-repeat: no-repeat;
+	width: 75%;
+	height: 75%;
+	margin-top: 4px;
+}
+nav.navbar{
+	position:fixed;
+	top:0;
+	right:0;
+	left:0;
+	z-index:1;
+	-webkit-backdrop-filter: blur(10px);
+	backdrop-filter: blur(10px);
+	background-color: rgba(255, 255, 255, 0.7);
+	border-radius: 0;
+}
+.posts{
+	.jumbotron, .post{
+		background-color: rgba(255, 255, 255, 0.7);
+		-webkit-backdrop-filter: blur(10px);
+		border: none;
+	}
+	.post{
+		background-color: rgba(255, 255, 255, 0.6);
+		border-radius: 0;
+		margin-bottom: 10px;
+	}
+}
+.post{
+	background-color: rgba(255, 255, 255, 0.6);
+	border-radius: 0;
+	margin-bottom: 10px;
+}
+.login{
+	margin: 0 auto;
+}
+.app-root > .container, .app-root > .row, .app-root > .posts, .app-root > .alert{
+	margin-top: 80px;
+}
+.front{
 	.picture{
 		position: fixed;
 		top: 0;
 		left: 0;
-		img{
-			height: 100vh;
-		}
+		height: 100vh;
+		width: 100vh;
+		background-size: cover !important;
+		background-repeat: no-repeat;
+		background-position:center;
 	}
 	.sideText {
 		padding: 100px;
 		padding-top: 100px;
+		padding-bottom: 20px;
 		float:right;
 		width: calc(~"100vw - 100vh - 10px");
-		height: 100vh;
 		font-family: 'Questrial', sans-serif;
 		font-size: 16px;
 		line-height: 22px;
@@ -22,26 +66,63 @@
 			color: #111;
 			font-family: 'Josefin Sans', sans-serif;
 		}
-		.social{
-			.socialCirc{
-				display: block;
-				float: left;
-				text-align:center;
-				margin: 0;
-				margin-right: 18px;
-				margin-top: 20px;
-				padding: 0;
-				width: 40px;
-				height: 40px;
-				border-radius: 50%;
-				color: #fff;
-				font-size: 30px;
-				line-height: 41px;
-				background-color:#aaa;
-				&:hover{
-					background-color: #888;
+		.socialBlock{
+			display: flex;
+			justify-content: space-around;
+			flex-wrap: wrap;
+			margin-top: 10px;
+			.social{
+				.socialCirc{
+					display: block;
+					float: left;
+					text-align:center;
+					margin: 0;
+					padding: 0;
+					margin-left: 12px;
+					margin-right: 12px;
+					margin-bottom: 18px;
+					width: 40px;
+					height: 40px;
+					border-radius: 50%;
+					color: #fff;
+					font-size: 24px;
+					line-height: 41px;
+					background-color:rgba(54, 71, 78, .7);
+					transition: background-color 0.5s ease-in-out;
+					&:hover{
+						background-color: #36474E;
+					}
 				}
 			}
+		}
+	}
+	@media (max-width: 1320px)  {
+		width: 60vw;
+		.picture{
+			right: 40vw;
+			width: auto;
+		}
+		.sideText{
+			right: 0;
+			width: 40vw;
+			padding: 8.5vw;
+			padding-top: 100px;
+			padding-bottom: 20px;
+			position: absolute;
+		}
+	}
+	@media (max-width: 768px)  {
+		width: 100vw;
+		.picture{
+			position: relative;
+			width: 100vw;
+			height: 100vw;
+		}
+		.sideText{
+			float:auto;
+			width: 100%;
+			margin-top: 0px;
+			padding-top: 10px;
 		}
 	}
 }

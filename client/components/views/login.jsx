@@ -25,8 +25,8 @@ Login = React.createClass({
         let { getValue } = ReactHelpers;
 
         let form     = component.refs.loginForm.refs.form,
-            email    = getValue( form, '[name="emailAddress"]' ),
-            password = getValue( form, '[name="password"]' );
+        email    = getValue( form, '[name="emailAddress"]' ),
+        password = getValue( form, '[name="password"]' );
 
         Meteor.loginWithPassword( email, password, ( error ) => {
           if ( error ) {
@@ -38,6 +38,13 @@ Login = React.createClass({
       }
     };
   },
+  handleFacebook(e){
+    var redirect = Meteor.absoluteUrl() + 'oauth?redirect=' + Session.get('previous_url');
+    var clientId = '809381422412544';
+    var url = 'https://www.facebook.com/dialog/oauth?client_id=' + clientId + '&response_type=token&redirect_uri=' + redirect;
+    e.preventDefault();
+    window.location = url;
+  },
   handleSubmit( event ) {
     event.preventDefault();
   },
@@ -47,25 +54,23 @@ Login = React.createClass({
       label: 'Forget Password?'
     };
 
-    return <GridRow>
-      <GridColumn className="col-xs-12 col-sm-6 col-md-5 col-lg-4">
-        <PageHeader size="h4" label="Log In" />
-        <InfoAlert>
-          To access the demo, you can use the email address <strong>admin@admin.com</strong> and the password <strong>password</strong>.
-        </InfoAlert>
-        <Form ref="loginForm" id="login" className="login" validations={ this.validations() } onSubmit={ this.handleSubmit }>
-          <FormGroup>
-            <EmailInput ref="emailAddress" showLabel={ true } />
-          </FormGroup>
-          <FormGroup>
-            <PasswordInput ref="password" showLabel={ true } labelLink={ passwordLabelLink } />
-          </FormGroup>
-          <FormGroup>
-            <SuccessButton type="submit" label="Login" />
-          </FormGroup>
-        </Form>
-        <p>Don't have an account? <a href="/signup">Sign Up</a>.</p>
-      </GridColumn>
+    return <GridRow className="login">
+    <GridColumn className="col-xs-12 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4 col-lg-4 col-lg-offset-4">
+    <PageHeader size="h4" label="Log In" />
+    <button className="btn btn-facebook btn-block" onClick={this.handleFacebook}>Log In With Facebook</button>
+    <div className="at-sep"><strong>OR</strong></div>
+    <Form ref="loginForm" id="login" className="login" validations={ this.validations() } onSubmit={ this.handleSubmit }>
+    <FormGroup>
+    <EmailInput ref="emailAddress" showLabel={ true } />
+    </FormGroup>
+    <FormGroup>
+    <PasswordInput ref="password" showLabel={ true } labelLink={ passwordLabelLink } />
+    </FormGroup>
+    <FormGroup>
+    <SuccessButton type="submit" label="Login" />
+    </FormGroup>
+    </Form>
+    </GridColumn>
     </GridRow>;
   }
 });

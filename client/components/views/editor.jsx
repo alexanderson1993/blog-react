@@ -30,6 +30,7 @@ Editor = React.createClass({
               title: getValue( form, '[name="postTitle"]' ),
               slug: getValue( form, '[name="postSlug"]' ),
               content: getValue( form, '[name="postContent"]' ),
+              updated: getValue( form, '[name="updated"]'),
               published: isChecked( form, '[name="postPublished"]' ),
               tags: getValue( form, '[name="postTags"]' ).split( ',' ).map( ( string ) => {
                 return string.trim();
@@ -110,6 +111,16 @@ Editor = React.createClass({
               name="postSlug"
               label="Slug"
               defaultValue={ this.data.post && this.data.post.slug }
+            />
+          </FormGroup>
+          <FormGroup>
+            <FormControl
+              showLabel={ true }
+              style="input"
+              type="text"
+              name="updated"
+              label="Updated"
+              defaultValue={ this.data.post && this.data.post.updated }
             />
           </FormGroup>
           <FormGroup>

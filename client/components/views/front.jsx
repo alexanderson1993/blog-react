@@ -20,23 +20,23 @@ Front = React.createClass({
 	},
 	renderSocial() {
 		return this.data.social.map( ( social ) => {
-			return <div className="social">
-			<a key={Random.id()} className="socialCirc" href={social.link} target="_blank">
-			<i className={'fa ' + social.icon}></i>
-			</a>
-			</div>
+			return <SocialClass key={social._id} link={social.link} icon={social.icon} name={social.name} />
 		});
 	},
 	render() {
+		let pictureStyle = {
+			background: "url(" + this.dict('frontPict') + ")"
+		};
 		return <div className="front">
-		<div className="picture">
-		<img src={ this.dict('frontPict') } />
+		<div className="picture" style={pictureStyle}>
 		</div>
 		<div className="sideText">
 		<h1>{ this.dict('name') }</h1>
 		<h4>{ this.dict('location') }</h4>
 		<div dangerouslySetInnerHTML={{__html: this.dict('text')}}></div>
+		<div className="socialBlock">
 		{ this.renderSocial() }
+		</div>
 		</div>
 		</div>;
 	}

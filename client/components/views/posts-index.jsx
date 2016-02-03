@@ -17,12 +17,12 @@ PostsIndex = React.createClass({
   renderHeader() {
     if ( this.props.tag ) {
       return <Jumbotron className="tags-header">
-        <h4>Posts tagged with: { this.props.tag }.</h4>
+      <h2>Blog <small>It is what it is...</small></h2>
+      <h4><small>Posts tagged with: { this.props.tag }</small></h4>
       </Jumbotron>;
     } else {
       return <Jumbotron className="blog-header">
-        <h2>Get Buff</h2>
-        <h4>A new blog by the HD Buff crew.</h4>
+      <h2>Blog <small>It is what it is...</small></h2>
       </Jumbotron>;
     }
   },
@@ -36,13 +36,23 @@ PostsIndex = React.createClass({
     }
   },
   render() {
+    var fullStyle = {
+      backgroundImage: Session.get('geoPattern'),
+      left: '0px',
+      right: '0px',
+      top: '0px',
+      bottom: '0px',
+      position: 'fixed',
+      paddingTop: '80px'
+    };
     return <div className="posts">
-      <GridRow>
-        <GridColumn className="col-xs-12 col-sm-8 col-sm-offset-2">
-          { this.renderHeader() }
-          { this.renderPosts() }
-        </GridColumn>
-      </GridRow>
+    <GridRow>
+    <div style={fullStyle}></div>
+    <GridColumn className="col-xs-12 col-sm-8 col-sm-offset-2">
+    { this.renderHeader() }
+    { this.renderPosts() }
+    </GridColumn>
+    </GridRow>
     </div>;
   }
 });

@@ -5,7 +5,7 @@ Post = React.createClass({
     if ( this.props.singlePost ) {
       return <h3>{ post.title }</h3>;
     } else {
-      return <h3><a href={ `/posts/${ post.slug }`}>{ post.title }</a></h3>;
+      return <h3><a href={ `/blog/${ post.slug }`}>{ post.title }</a></h3>;
     }
   },
   getHTML( markdown ) {
@@ -17,7 +17,7 @@ Post = React.createClass({
     if ( tags ) {
       return <div className="tags">
         {tags.map( ( tag ) => {
-          return <a className="tag" href={ `/tags/${ tag }` }>#{ tag }</a>;
+          return <a className="tag" href={ `/blog/tags/${ tag }` }>#{ tag }</a>;
         })}
       </div>;
     }
@@ -25,12 +25,17 @@ Post = React.createClass({
   render() {
     let { formatLastUpdate } = ReactHelpers,
         post                 = this.props.post;
-
+        var html;
+    if (this.props.singlePost){
+      html = post.content;
+    } else {
+      html = post.exerpt;
+    }
     return <div className="post">
       { this.getPostTitle() }
       <p><strong>Last Updated:</strong> { formatLastUpdate( post.updated ) } by { post.author }</p>
       { this.renderTags( post.tags ) }
-      <div className="post-body" dangerouslySetInnerHTML={ this.getHTML( post.content ) } />
+      <div className="post-body" dangerouslySetInnerHTML={ this.getHTML( html ) } />
     </div>;
   }
 });
