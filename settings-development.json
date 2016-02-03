@@ -1,8 +1,16 @@
 {
-  "public": {
-    "key": "value"
-  },
-  "private": {
-    "MAIL_URL": ""
-  }
+  "AWSAccessKeyId": "xxxxxx",
+	"AWSSecretAccessKey": "xxxxx",
+	"private": {
+		"MAIL_URL": ""
+	},
+	"PrerenderIO": {
+    	"prerenderServiceUrl": "http://example.com/",
+    	"token": "token"
+  	},
+	"public": {
+		"ga": {
+			"account":"UA-xxxxxxx-1"
+		}
+	}
 }
