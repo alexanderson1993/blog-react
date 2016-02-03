@@ -1,17 +1,14 @@
-# The Meteor Chef - Base
-A starting point for Meteor apps.
+# My Blog - Made with React
 
-<table>
-  <tbody>
-    <tr>
-      <th>Base Version</th>
-      <td>v3.3.0</td>
-    </tr>
-    <tr>
-      <th>Meteor Version</th>
-      <td>v1.2.1</td>
-    </tr>
-  </tbody>
-</table>
+A starting point for a blog. Heavily influenced by the [Meteor Chef React blog](https://themeteorchef.com/recipes/building-a-blog-with-react/) tutorial. Includes: 
 
-[Read the Documentation](http://themeteorchef.com/base)
+* posts
+* tags
+* rss feed
+* an Amazon S3 upload mechanism
+* support for Facebook accounts
+
+Will eventually include:
+
+* portfolio
+* comments
