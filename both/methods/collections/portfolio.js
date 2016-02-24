@@ -11,7 +11,7 @@ Meteor.methods({
 			}
 			return Portfolio.insert( argument );
 		} catch( exception ) {
-			return exception;
+			throw exception;
 		}
 	}
 });

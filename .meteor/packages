@@ -9,6 +9,7 @@ jquery
 check
 less
 http
+blaze
 audit-argument-checks
 themeteorchef:jquery-validation
 twbs:bootstrap
@@ -45,7 +46,6 @@ momentjs:moment
 
 cfs:standard-packages
 cfs:gridfs
-cfs:autoform
 cfs:s3
 
 allandequeiroz:rss2.0
@@ -60,3 +60,4 @@ accounts-google
 service-configuration
 
 alanning:roles
+aldeed:autoform

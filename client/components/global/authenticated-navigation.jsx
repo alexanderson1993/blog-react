@@ -6,6 +6,7 @@ AuthenticatedNavigation = React.createClass({
     let left = [
     { uid: 'about', href: '/', label: 'About' },
     { uid: 'blog', href: '/blog', label :'Blog'},
+    { uid: 'resume', href: '/resume', label :'Resume'},
     ];
     if (isAdmin) {
       left.push({
@@ -16,7 +17,8 @@ AuthenticatedNavigation = React.createClass({
         dropdownItems: [
         { uid: 'posts', href: '/posts', label: 'Posts' },
         { uid: 'upload', href: '/upload', label: 'Upload' },
-        { uid: 'portfolioAdmin', href: '/portfolioAdmin', label: 'Portfolio' }
+        { uid: 'portfolioAdmin', href: '/portfolioAdmin', label: 'Portfolio' },
+        { uid: 'resumeAdmin', href: '/resumeAdmin', label: 'Resume' }
         ]
       });
     }

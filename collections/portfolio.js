@@ -11,20 +11,24 @@ Portfolio.deny({
 	update: () => true,
 	remove: () => true
 });
-
+let year = moment().year().toString();
 let PortfolioSchema = new SimpleSchema({
 	"name":{
-		type: String
+		type: String,
+		defaultValue: "Untitled Item"
 	},
 	"description":{
 		type: String,
+		optional:true
 	},
 	"year":{
-		type: Number
+		type: String,
+		defaultValue: year
 	},
 	images: {
 		type: Array,
-		minCount: 1
+		minCount: 1,
+		optional:true
 	},
 	"images.$": {
 		type: String
