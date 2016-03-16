@@ -37,9 +37,10 @@ publicRoutes.route( '/blog/tags/:tag', {
 publicRoutes.route( '/resume', {
   name: 'resume',
   action() {
-      ReactLayout.render( App, { yield: <ResumePage />})
+    GAnalytics.pageview('/resume');
+    ReactLayout.render( App, { yield: <ResumePage />});
   }
-})
+});
 publicRoutes.route( '/login', {
   name: 'login',
   action() {

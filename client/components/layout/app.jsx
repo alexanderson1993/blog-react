@@ -11,6 +11,7 @@ App = React.createClass({
         'singlePost',
         'tagIndex',
         'login',
+        'resume',
         'recoverPassword',
         'resetPassword',
         'notFound'
