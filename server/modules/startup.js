@@ -31,8 +31,8 @@ var _generateAccounts = () => Modules.server.generateAccounts();
 
 var _setAdminUser = () => {
 	var adminUser = Meteor.users.findOne({emails:[{address:'alexanderson1993@gmail.com', verified: true}]});
-	if (!Roles.userIsInRole(adminUser._id,'admin')){
+	/*if (!Roles.userIsInRole(adminUser._id,'admin')){
 		Roles.addUsersToRoles([adminUser._id],'admin');
-	}
+	}*/
 };
 Modules.server.startup = startup;
